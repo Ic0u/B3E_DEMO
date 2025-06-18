@@ -1,9 +1,34 @@
 /* Behavior Graph Editor styles */
+:root {
+  /* Dark theme (Dracula inspired) */
+  --bg-color: #282a36;
+  --text-color: #f8f8f2;
+  --sidebar-bg: #1e1f29;
+  --sidebar-border: rgba(255,255,255,0.08);
+  --hover-bg: rgba(255,255,255,0.08);
+  --grid-color: rgba(98, 114, 164, 0.15);
+  --node-bg: #44475a;
+  --node-border: #6272a4;
+  --node-shadow: rgba(0,0,0,0.5);
+  --spinner-color: #ff79c6;
+  --purple: #bd93f9;
+  --green: #50fa7b;
+  --yellow: #f1fa8c;
+  --orange: #ffb86c;
+  --red: #ff5555;
+  --cyan: #8be9fd;
+  --pink: #ff79c6;
+  --comment: #6272a4;
+}
+
 body{
   margin: 0;
   display: flex;
   height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 .pill{
   background: rgba(30,30,30,0.65);
@@ -19,11 +44,11 @@ body{
   gap: 8px;
 }
 .pill-vertical{
-  background: rgba(30,30,30,0.65);
-  backdrop-filter: blur(4px);
-  border-radius: 12px;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
   padding: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 0 15px var(--node-shadow);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -31,27 +56,76 @@ body{
   top: 16px;
   right: 16px;
   z-index: 10;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 #sidebar{
-  border:1px solid rgba(255,255,255,0.08);
-  width: auto;
+  border: 1px solid var(--sidebar-border);
+  width: 45px;
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  background: transparent;
+  background: var(--sidebar-bg);
   padding: 8px 4px;
-  box-shadow:none;
+  box-shadow: 0 0 15px var(--node-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  border-radius: 12px;
+  border-radius: 8px;
   margin: 8px;
+  position: fixed;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  z-index: 100;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 #sidebar h3{
   display: none;
 }
+.sidebar-title {
+  color: #f1f5f9;
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  margin-bottom: 5px;
+}
+
+.sidebar-divider {
+  height: 1px;
+  width: 80%;
+  background-color: rgba(255,255,255,0.1);
+  margin: 5px 0;
+}
+
+.sidebar-btn {
+  background: transparent;
+  color: #f1f5f9;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  margin: 2px 0;
+  padding: 0;
+}
+
+.sidebar-btn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.sidebar-btn:active {
+  transform: scale(0.95);
+}
+
 #sidebar .icon-btn{
   background: rgba(55,55,55,0.35);
   color:#f9fafb;
@@ -70,8 +144,8 @@ body{
   transition: background 0.2s;
 }
 .icon-btn{
-  background: rgba(55,55,55,0.35);
-  color:#f9fafb;
+  background: transparent;
+  color:#f1f5f9;
   min-width: 32px;
   padding:4px 8px;
   height: 32px;
@@ -79,25 +153,30 @@ body{
   align-items: center;
   justify-content: center;
   border: none;
-  background: transparent;
-  color: #1f2937;
-  font-size: 18px;
-  border-radius: 12px;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  margin: 2px 0;
 }
 .icon-btn:hover{
-  background: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.12);
-  
+  background: rgba(255,255,255,0.1);
+}
+.icon-btn:active{
+  transform: scale(0.95);
 }
 #cy-container{
   flex: 1;
   position: relative;
-  background-color: #1a1a1a;
-  /* dotted grid background */
-  background-image: radial-gradient(circle, #2e2e2e 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-color: var(--bg-color);
+  /* dotted grid background with Dracula colors */
+  background-image: 
+    radial-gradient(circle, rgba(98, 114, 164, 0.15) 1px, transparent 1px),
+    radial-gradient(circle, rgba(98, 114, 164, 0.05) 4px, transparent 4px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 0 0;
+  transition: background-color 0.3s;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
 }
 /* Preloader */
 #preloader{
