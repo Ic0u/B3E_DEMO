@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behavior Graph Editor</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome for sidebar icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUC2F2U8mG7k3eBl5E4s1kVwJ4qRS9r+8nbKq4+AmG5+6Xb6Ck/4DQZ8t+Kl9B35+5Pq91g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Cytoscape.js & extensions -->
+  <script src="https://unpkg.com/cytoscape@3.26.1/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.3.2/cytoscape-dagre.js"></script>
+  <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-edgehandles@4.0.1/cytoscape-edgehandles.js"></script>
+  <script src="https://unpkg.com/cytoscape-undo-redo@1.0.6/cytoscape-undo-redo.js"></script>
+  <!-- Register plugins -->
+  <script>
+    if(window.cytoscapeDagre){ cytoscape.use(window.cytoscapeDagre); }
+    if(window.cytoscapeEdgehandles){ cytoscape.use(window.cytoscapeEdgehandles); }
+  </script>
+</head>
+<body>
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="sidebar" class="pill">
+    <!-- palette buttons inserted by JS -->
+    <input type="file" id="fileInput" accept="application/json" style="display:none" />
+  </div>
+  <div id="actionBar" class="pill-vertical"></div>
+  <div id="cy-container">
+    <div id="cy"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

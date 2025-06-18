@@ -1,0 +1,129 @@
+/* Behavior Graph Editor styles */
+body{
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pill{
+  background: rgba(30,30,30,0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(30,30,30,0.65);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 8px;
+}
+.pill-vertical{
+  background: rgba(30,30,30,0.65);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+#sidebar{
+  border:1px solid rgba(255,255,255,0.08);
+  width: auto;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  background: transparent;
+  padding: 8px 4px;
+  box-shadow:none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  margin: 8px;
+}
+#sidebar h3{
+  display: none;
+}
+#sidebar .icon-btn{
+  background: rgba(55,55,55,0.35);
+  color:#f9fafb;
+  min-width: 32px;
+  padding:4px 8px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color:#f1f5f9;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.icon-btn{
+  background: rgba(55,55,55,0.35);
+  color:#f9fafb;
+  min-width: 32px;
+  padding:4px 8px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #1f2937;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.icon-btn:hover{
+  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.12);
+  
+}
+#cy-container{
+  flex: 1;
+  position: relative;
+  background-color: #1a1a1a;
+  /* dotted grid background */
+  background-image: radial-gradient(circle, #2e2e2e 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Preloader */
+#preloader{
+  position: fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:#0f0f0f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  transition:opacity 0.3s ease;
+}
+#preloader.hide{opacity:0;pointer-events:none;}
+.spinner{
+  width:48px;height:48px;
+  border:6px solid #444;
+  border-top-color:#38bdf8;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+#cy{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
